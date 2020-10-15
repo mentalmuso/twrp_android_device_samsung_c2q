@@ -49,6 +49,7 @@ odm						/odm		ext4	ro,barrier=1,discard		wait,avb,logical
 /dev/block/bootdevice/by-name/sec_efs		/efs		ext4	defaults			recoveryonly
 /dev/block/bootdevice/by-name/sec_efs		/sec_efs	ext4	defaults			recoveryonly
 /dev/block/bootdevice/by-name/carrier		/carrier	ext4	defaults			recoveryonly
+/dev/block/bootdevice/by-name/persist		/persist	ext4	defaults			recoveryonly
 
 #FOTA
 /dev/block/bootdevice/by-name/apnhlos		/modem		emmc	defaults			recoveryonly
