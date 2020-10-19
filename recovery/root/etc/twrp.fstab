@@ -8,14 +8,15 @@ vendor		/vendor	ext4							display="Vendor";logical,first_stage_mount
 product	/product	ext4							display="Product";logical,first_stage_mount
 odm		/odm		ext4							display="Odm";logical,first_stage_mount
 
+/boot		emmc		/dev/block/bootdevice/by-name/boot          flags=backup=1;display="Boot";flashimg=1
+/recovery	emmc		/dev/block/bootdevice/by-name/recovery		flags=backup=1;display="Recovery";flashimg=1
+
 /super_image	emmc		/dev/block/bootdevice/by-name/super			flags=backup=1;display="Super_image";flashimg=1
 /system_image    emmc    /dev/block/mapper/system                             flags=backup=1;display="System_image";flashimg=1
 /vendor_image    emmc    /dev/block/mapper/vendor                             flags=backup=1;display="Vendor_image";flashimg=1
 /product_image    emmc    /dev/block/mapper/product                             flags=backup=1;display="Product_image";flashimg=1
 
 /data       f2fs        /dev/block/bootdevice/by-name/userdata      flags=backup=1;settingsstorage=1
-/boot		emmc		/dev/block/bootdevice/by-name/boot          flags=backup=1;display="Boot";flashimg=1
-/recovery	emmc		/dev/block/bootdevice/by-name/recovery		flags=backup=1;display="Recovery";flashimg=1
 /prism		ext4		/dev/block/bootdevice/by-name/prism			flags=backup=1;display="Prism";backup=1;flashimg=1
 /optics		ext4		/dev/block/bootdevice/by-name/optics			flags=backup=1;display="Optics";backup=1;flashimg=1
 /modem		emmc		/dev/block/bootdevice/by-name/modem			flags=backup=0;display="Modem"

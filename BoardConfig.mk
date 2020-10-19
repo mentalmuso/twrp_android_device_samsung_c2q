@@ -73,7 +73,7 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset 
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET) --second_offset $(BOARD_KERNEL_SECOND_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION) --pagesize $(BOARD_KERNEL_PAGESIZE) --board "SRPSI24B001"
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB) --dtb_offset $(BOARD_DTB_OFFSET)
-BOARD_CUSTOM_BOOTIMG_MK := device/samsung/c2q/bootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := device/samsung/c2q/prebuilt/bootimg.mk
 
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -130,4 +130,6 @@ TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_USE_TOOLBOX := true
 TW_INCLUDE_NTFS_3G := true
 TARGET_USES_MKE2FS := true
+TARGET_USES_64_BIT_BINDER := true
+
 
