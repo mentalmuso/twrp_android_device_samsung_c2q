@@ -25,7 +25,8 @@ echo " 4. Wipe system or vendor"
 echo " 5. Debloat options"
 echo " 6. Magisk options"
 echo " 7. MPS_CODE/Carrier code setting"
-echo " 8. EXIT"
+echo " 8. Fix bluetooth/wearables"
+echo " 9. EXIT"
 echo " "
 read category
 echo " "
@@ -222,8 +223,30 @@ if [ "$category" != "${category#[7]}" ] ;then
     fi
     umount efs
 fi
-##### Exit
+##### bt
 if [ "$category" != "${category#[8]}" ] ;then
+    echo " ---> Patch Bluetooth"
+    echo " "
+    echo " This option will patch bluetooth to"
+    echo " fix issues connecting to wearables"
+    echo " "
+    echo " type Y to continue"
+    echo " "
+    read btpatch
+    if [ "$btpatch" != "${btpatch#[y]}" ] ;then
+        twrpx_mount_v
+        cp --preserve=all /vendor/etc/vintf/manifest.xml /vendor/etc/vintf/manifest.xml.bak
+        sed -i /`grep wsm /vendor/etc/vintf/manifest.xml|sed 's@/@\\\/@'|sed 's@>@\\>@g'|sed 's@<@\\<@g'|tr -d ' '`/,/'<hal format="hidl">'/d /vendor/etc/vintf/manifest.xml
+    fi
+    if [ "$btpatch" != "${btpatch#[Y]}" ] ;then
+        twrpx_mount_v
+        cp --preserve=all /vendor/etc/vintf/manifest.xml /vendor/etc/vintf/manifest.xml.bak
+        sed -i /`grep wsm /vendor/etc/vintf/manifest.xml|sed 's@/@\\\/@'|sed 's@>@\\>@g'|sed 's@<@\\<@g'|tr -d ' '`/,/'<hal format="hidl">'/d /vendor/etc/vintf/manifest.xml
+    fi
+    echo " - Bluetooth has been patched"
+fi
+##### Exit
+if [ "$category" != "${category#[9]}" ] ;then
     echo " "
     echo " "
     echo " - Unmounting System and Vendor for a safe reboot"

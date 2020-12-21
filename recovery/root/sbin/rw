@@ -1,0 +1,24 @@
+#!/sbin/sh
+
+SYS=/system/build.prop
+VEN=/vendor/build.prop
+
+if [ ! -f "$SYS" ]; then
+    mount /dev/block/mapper/system /system_root
+    mount -o rw,remount /system
+else
+    mount -o rw,remount /system
+fi
+
+if [ ! -f "$VEN" ]; then
+    mount /dev/block/mapper/vendor /vendor
+    mount -o rw,remount /vendor
+else
+    mount -o rw,remount /vendor
+fi
+
+echo " "
+echo " - system and vendor are now writable"
+echo " "
+
+exit 0
